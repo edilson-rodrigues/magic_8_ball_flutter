@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(
-      MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'Ask Me Anything',
-            ),
-          ),
-        ),
-      ),
+      MaterialApp(home: BallPage()),
     );
 
 class BallPage extends StatefulWidget {
@@ -20,6 +12,26 @@ class BallPage extends StatefulWidget {
 class _BallPageState extends State<BallPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.blue,
+      appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title: Text(
+          'Ask Me Anything',
+        ),
+      ),
+      body: Container(
+        child: Center(
+          child: FlatButton(
+            onPressed: () {
+              print('I got cliked');
+            },
+            child: Image.asset(
+              'images/ball1.png',
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
