@@ -11,8 +11,12 @@ class BallPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.blue.shade900,
-        title: Text('Ask Me Anything'),
+        title: Text(
+          'Ask Me Anything',
+        ),
+        centerTitle: true,
       ),
       body: Ball(),
     );
@@ -29,14 +33,28 @@ class _BallState extends State<Ball> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: FlatButton(
-        onPressed: () {
-          setState(() {
-            ballNumber = Random().nextInt(5) + 1;
-          });
-        },
-        child: Image.asset('images/ball$ballNumber.png'),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end:
+              Alignment(0.0, 0.0), // 10% of the width, so there are ten blinds.
+          colors: [
+            Colors.blue.shade900,
+            Colors.blue,
+          ], // red to yellow
+          // repeats the gradient over the canvas
+        ),
+      ),
+      child: Center(
+        child: FlatButton(
+          onPressed: () {
+            setState(() {
+              ballNumber = Random().nextInt(5) + 1;
+            });
+          },
+          child: Image.asset('images/ball$ballNumber.png'),
+        ),
       ),
     );
   }
